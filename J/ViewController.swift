@@ -10,9 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     var number = 0
-    var a = 0
-    var b = 0
-    var c = 0
+    var a = 0.0
+    var b = 0.0
+    var c = 0.0
     var p = 0
     @IBOutlet weak var show1: UITextField!
     @IBOutlet weak var show2: UITextField!
@@ -46,77 +46,93 @@ class ViewController: UIViewController {
     }
     @IBAction func zero(_ sender: Any) {
         if show.text == ""{
-            show.text = ""
+            show.text = "0"
         }else{
             show.text = show.text! + "0"
         }
     }
     @IBAction func add(_ sender: Any) {
         if show.text == ""{
-            show.text = "0"
+            show1.text = "0"
             number = 1
         }else{
-            a = Int(show.text!)!
+            a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
             number = 1
+            p = 0
         }
     }
     @IBAction func reduction(_ sender: Any) {
         if show.text == ""{
-            show.text = "0"
+            show1.text = "0"
             number = 2
         }else{
-            a = Int(show.text!)!
+            a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
             number = 2
+            p = 0
         }
     }
     @IBAction func take(_ sender: Any) {
         if show.text == ""{
-            show.text = "0"
+            show1.text = "0"
             number = 3
         }else{
-            a = Int(show.text!)!
+            a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
             number = 3
+            p = 0
         }
     }
     @IBAction func addition(_ sender: Any) {
         if show.text == ""{
-            show.text = "0"
+            show1.text = "0" 
             number = 4
         }else{
-            a = Int(show.text!)!
+            a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
             number = 4
+            p = 0
         }
     }
     @IBAction func equal(_ sender: Any) {
-        b = Int(show.text!)!
-        show2.text = String(b)
-        show.text = "0"
-        if number == 1{
-            c = a + b
-        }else if number == 2{
-            c = a - b
-        }else if number == 3{
-            c = a * b
-        }else if number == 4{
-            c = a / b
+        if show.text == "0"{
+            show2.text = "0"
+            show.text = "不能除以0"
+        }else{
+            b = Double(show.text!)!
+            show2.text = String(b)
+            show.text = ""
+            if number == 1{
+                c = a + b
+            }else if number == 2{
+                c = a - b
+            }else if number == 3{
+                c = a * b
+            }else if number == 4{
+                c = a / b
+            }
+            show.text = String(format:"%.2lf" , c)
         }
-        show.text = String(c)
+        
     }
     @IBAction func point(_ sender: Any) {
-        
+        if p == 0{
+            show.text = show.text! + "."
+            p = 1
+        }else{
+            show.text = show.text
+        }
     }
     @IBAction func Delete(_ sender: Any) {
         show.text = ""
         show1.text = ""
         show2.text = ""
+        p = 0
     }
     override func viewDidLoad() {
         super.viewDidLoad()
