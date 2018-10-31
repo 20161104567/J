@@ -100,9 +100,9 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func equal(_ sender: Any) {
-        if show.text == "0"{
-            show2.text = "0"
+        if show.text == "0" && number == 4{
             show.text = "不能除以0"
+            show2.text = "0"
         }else{
             b = Double(show.text!)!
             show2.text = String(b)
@@ -118,7 +118,6 @@ class ViewController: UIViewController {
             }
             show.text = String(format:"%.2lf" , c)
         }
-        
     }
     @IBAction func point(_ sender: Any) {
         if p == 0{
@@ -126,6 +125,16 @@ class ViewController: UIViewController {
             p = 1
         }else{
             show.text = show.text
+        }
+    }
+    @IBAction func percent(_ sender: Any) {
+        if show.text == ""{
+            show1.text = "0"
+        }else{
+            var per = 0.0
+            per = Double(show.text!)!
+            per = per * 0.01
+            show.text = String(per)
         }
     }
     @IBAction func Delete(_ sender: Any) {
