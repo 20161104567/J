@@ -17,48 +17,62 @@ class ViewController: UIViewController {
     @IBOutlet weak var show1: UITextField!
     @IBOutlet weak var show2: UITextField!
     @IBOutlet weak var show: UITextField!
+    @IBOutlet weak var box: UITextField!
     @IBAction func one(_ sender: Any) {
         show.text = show.text! + "1"
+        box.text = box.text! + "1"
     }
     @IBAction func two(_ sender: Any) {
         show.text = show.text! + "2"
+        box.text = box.text! + "2"
     }
     @IBAction func three(_ sender: Any) {
         show.text = show.text! + "3"
+        box.text = box.text! + "3"
     }
     @IBAction func four(_ sender: Any) {
         show.text = show.text! + "4"
+        box.text = box.text! + "4"
     }
     @IBAction func five(_ sender: Any) {
         show.text = show.text! + "5"
+        box.text = box.text! + "5"
     }
     @IBAction func six(_ sender: Any) {
         show.text = show.text! + "6"
+        box.text = box.text! + "6"
     }
     @IBAction func seven(_ sender: Any) {
         show.text = show.text! + "7"
+        box.text = box.text! + "7"
     }
     @IBAction func eight(_ sender: Any) {
         show.text = show.text! + "8"
+        box.text = box.text! + "8"
     }
     @IBAction func nine(_ sender: Any) {
         show.text = show.text! + "9"
+        box.text = box.text! + "9"
     }
     @IBAction func zero(_ sender: Any) {
         if show.text == ""{
             show.text = "0"
+            box.text =  "0"
         }else{
             show.text = show.text! + "0"
+            box.text = box.text! + "0"
         }
     }
     @IBAction func add(_ sender: Any) {
         if show.text == ""{
             show1.text = "0"
+            box.text = "0+"
             number = 1
         }else{
             a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
+            box.text = box.text! + "+"
             number = 1
             p = 0
         }
@@ -66,11 +80,13 @@ class ViewController: UIViewController {
     @IBAction func reduction(_ sender: Any) {
         if show.text == ""{
             show1.text = "0"
+            box.text = "0-"
             number = 2
         }else{
             a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
+            box.text = box.text! + "-"
             number = 2
             p = 0
         }
@@ -78,23 +94,27 @@ class ViewController: UIViewController {
     @IBAction func take(_ sender: Any) {
         if show.text == ""{
             show1.text = "0"
+            box.text = "0*"
             number = 3
         }else{
             a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
+            box.text = box.text! + "*"
             number = 3
             p = 0
         }
     }
     @IBAction func addition(_ sender: Any) {
         if show.text == ""{
-            show1.text = "0" 
+            show1.text = "0"
+            box.text = "0/"
             number = 4
         }else{
             a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
+            box.text = box.text! + "/"
             number = 4
             p = 0
         }
@@ -117,11 +137,13 @@ class ViewController: UIViewController {
                 c = a / b
             }
             show.text = String(format:"%.2lf" , c)
+            box.text = box.text! + "=" + show.text!
         }
     }
     @IBAction func point(_ sender: Any) {
         if p == 0{
             show.text = show.text! + "."
+            box.text = box.text! + "."
             p = 1
         }else{
             show.text = show.text
@@ -135,12 +157,35 @@ class ViewController: UIViewController {
             per = Double(show.text!)!
             per = per * 0.01
             show.text = String(per)
+            box.text = box.text! + "%"
         }
+    }
+    @IBAction func symbol(_ sender: Any) {
+        /*if show.text == ""{
+            show1.text = "0"
+        }else{
+            var per = 0.0
+            per = Double(show.text!)!
+            per = -per
+            show.text = String(per)
+        }*/
+        var x = 0
+        if x == 1{
+            show.text = "-"
+            box.text = "-"
+            x=0
+        }else{
+            show.text = show.text
+            box.text = box.text
+            x=1
+        }
+        
     }
     @IBAction func Delete(_ sender: Any) {
         show.text = ""
         show1.text = ""
         show2.text = ""
+        box.text = ""
         p = 0
     }
     override func viewDidLoad() {
