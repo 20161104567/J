@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var b = 0.0
     var c = 0.0
     var p = 0
+    var x = 0
     @IBOutlet weak var show1: UITextField!
     @IBOutlet weak var show2: UITextField!
     @IBOutlet weak var show: UITextField!
@@ -58,7 +59,8 @@ class ViewController: UIViewController {
         if show.text == ""{
             show.text = "0"
             box.text =  "0"
-        }else{
+        }
+        else{
             show.text = show.text! + "0"
             box.text = box.text! + "0"
         }
@@ -68,7 +70,8 @@ class ViewController: UIViewController {
             show1.text = "0"
             box.text = "0+"
             number = 1
-        }else{
+        }
+        else{
             a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
@@ -82,7 +85,8 @@ class ViewController: UIViewController {
             show1.text = "0"
             box.text = "0-"
             number = 2
-        }else{
+        }
+        else{
             a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
@@ -96,7 +100,8 @@ class ViewController: UIViewController {
             show1.text = "0"
             box.text = "0*"
             number = 3
-        }else{
+        }
+        else{
             a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
@@ -110,7 +115,8 @@ class ViewController: UIViewController {
             show1.text = "0"
             box.text = "0/"
             number = 4
-        }else{
+        }
+        else{
             a = Double(show.text!)!
             show1.text = String(a)
             show.text = ""
@@ -123,17 +129,21 @@ class ViewController: UIViewController {
         if show.text == "0" && number == 4{
             show.text = "不能除以0"
             show2.text = "0"
-        }else{
+        }
+        else{
             b = Double(show.text!)!
             show2.text = String(b)
             show.text = ""
             if number == 1{
                 c = a + b
-            }else if number == 2{
+            }
+            else if number == 2{
                 c = a - b
-            }else if number == 3{
+            }
+            else if number == 3{
                 c = a * b
-            }else if number == 4{
+            }
+            else if number == 4{
                 c = a / b
             }
             show.text = String(format:"%.2lf" , c)
@@ -145,14 +155,16 @@ class ViewController: UIViewController {
             show.text = show.text! + "."
             box.text = box.text! + "."
             p = 1
-        }else{
+        }
+        else{
             show.text = show.text
         }
     }
     @IBAction func percent(_ sender: Any) {
         if show.text == ""{
             show1.text = "0"
-        }else{
+        }
+        else{
             var per = 0.0
             per = Double(show.text!)!
             per = per * 0.01
@@ -161,31 +173,25 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func symbol(_ sender: Any) {
-        /*if show.text == ""{
-            show1.text = "0"
-        }else{
-            var per = 0.0
-            per = Double(show.text!)!
-            per = -per
-            show.text = String(per)
-        }*/
-        var x = 0
-        if x == 1{
-            show.text = "-"
-            box.text = "-"
-            x=0
-        }else{
-            show.text = show.text
-            box.text = box.text
-            x=1
+        if show.text?.first == "-"{
+            show.text?.removeFirst()
+            box.text?.removeFirst()
         }
-        
+        else{
+            show.text = "-" + show.text!
+            box.text = show.text!
+        }
     }
     @IBAction func Delete(_ sender: Any) {
         show.text = ""
         show1.text = ""
         show2.text = ""
         box.text = ""
+        p = 0
+    }
+    @IBAction func DelOne(_ sender: Any) {
+        show.text?.removeLast()
+        box.text?.removeLast()
         p = 0
     }
     override func viewDidLoad() {
